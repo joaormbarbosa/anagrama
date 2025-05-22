@@ -1,26 +1,32 @@
-<!-- src/app/app.component.html -->
+<!-- Container principal centralizado -->
+<div class="container">
 
-<!-- Título principal -->
-<h1>Gerador de Anagramas</h1>
+  <!-- Título -->
+  <h1>🔤 Gerador de Anagramas</h1>
 
-<!-- Campo de entrada com largura maior e novo placeholder -->
-<input
-  [(ngModel)]="letras"
-  placeholder="Digite 3 letras diferentes (ex: abc)"
-  style="width: 300px; padding: 6px;"
-/>
+  <!-- Campo de entrada e botão -->
+  <div class="input-group">
+    <input
+      [(ngModel)]="letras"
+      maxlength="3"
+      placeholder="Digite 3 letras diferentes (ex: abc)"
+    />
+    <button (click)="gerarAnagramas()">Gerar</button>
+  </div>
 
-<!-- Botão para gerar -->
-<button (click)="gerarAnagramas()">Gerar</button>
+  <!-- Lista de anagramas -->
+  <div *ngIf="anagramas.length > 0" class="resultado">
+    <h2>Anagramas:</h2>
+    <ul>
+      <li *ngFor="let a of anagramas">{{ a }}</li>
+    </ul>
+  </div>
 
-<!-- Lista de anagramas -->
-<h2>Anagramas:</h2>
-<ul *ngIf="anagramas.length > 0">
-  <li *ngFor="let a of anagramas">{{ a }}</li>
-</ul>
-
-<!-- Histórico das últimas buscas -->
-<h3>Últimas 10 buscas</h3>
-<ol>
-  <li *ngFor="let h of historico">{{ h }}</li>
-</ol>
+  <!-- Histórico -->
+  <div *ngIf="historico.length > 0" class="historico">
+    <h3>Últimas 10 buscas:</h3>
+    <ol>
+      <li *ngFor="let item of historico">{{ item }}</li>
+    </ol>
+  </div>
+</div>
