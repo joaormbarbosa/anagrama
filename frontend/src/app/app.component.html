@@ -1,0 +1,26 @@
+<!-- src/app/app.component.html -->
+
+<!-- Título principal -->
+<h1>Gerador de Anagramas</h1>
+
+<!-- Campo de entrada com largura maior e novo placeholder -->
+<input
+  [(ngModel)]="letras"
+  placeholder="Digite 3 letras diferentes (ex: abc)"
+  style="width: 300px; padding: 6px;"
+/>
+
+<!-- Botão para gerar -->
+<button (click)="gerarAnagramas()">Gerar</button>
+
+<!-- Lista de anagramas -->
+<h2>Anagramas:</h2>
+<ul *ngIf="anagramas.length > 0">
+  <li *ngFor="let a of anagramas">{{ a }}</li>
+</ul>
+
+<!-- Histórico das últimas buscas -->
+<h3>Últimas 10 buscas</h3>
+<ol>
+  <li *ngFor="let h of historico">{{ h }}</li>
+</ol>
